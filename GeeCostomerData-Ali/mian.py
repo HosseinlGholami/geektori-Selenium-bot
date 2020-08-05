@@ -1,6 +1,6 @@
 from selenium import webdriver
 from util import (init,Scarb)
-import  time
+
 driver = webdriver.Chrome('./chromedriver.exe')
 #Xh : Excel handller ,DT:Date Time
 Wb,DT=init(driver)
