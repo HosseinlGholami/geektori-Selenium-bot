@@ -16,12 +16,13 @@ next_page_Xpath='/html/body/div[1]/div/div[4]/div/div[2]/div[1]/div/div[2]/div[3
 
 name_Xpath=      '/html/body/div[1]/div/div[4]/div/div[2]/div[2]/div/div/div/div/div[1]/div/div[1]/div/div[1]/div/div[2]/div[1]/div'
 
-ersal_Xpath=     '/html/body/div[1]/div/div[4]/div/div[2]/div[2]/div/div/div/div/div[1]/div/div[1]/div/div[1]/div/div[3]/div/div/div[4]/div'
-marsoole_Xpath=  '/html/body/div[1]/div/div/div[3]/div/div[2]/div[2]/div/div/div/div/div[1]/div/div[1]/div/div[1]/div/div[3]/div/div/div[4]/div'
+ersal_Xpath=     '/html/body/div[1]/div/div[4]/div/div[2]/div[2]/div/div/div/div/div[1]/div/div[1]/div/div[1]/div/div[3]/div/div/div[4]'
+                 
+marsoole_Xpath=  '/html/body/div[1]/div/div[4]/div/div[2]/div[2]/div/div/div/div/div[1]/div/div[1]/div/div[1]/div/div[3]/div/div/div[4]/div'
 inputmarso_Xpath='/html/body/div[1]/div/div[4]/div/div[2]/div[2]/div/div/div/div/div[1]/div/div[2]/div/div/div/div/div[1]/div/div[2]/div/input'
-confirm_Xpath='/html/body/div[1]/div/div[4]/div/div[2]/div[2]/div/div/div/div/div[1]/div/div[2]/div/div/div/div/div[2]/div[2]'
 
-Close_Xpath='/html/body/div[1]/div/div[4]/div/div[2]/div[2]/div/div/div/div/div[2]/div[1]'
+confirm_Xpath='/html/body/div[1]/div/div[4]/div/div[2]/div[2]/div/div/div/div/div[2]/div[2]'
+Cancel_Xpath ='/html/body/div[1]/div/div[4]/div/div[2]/div[2]/div/div/div/div/div[2]/div[1]'
 
 def init(driver):
     driver.get('https://geektori.ir/admin/orders')
@@ -52,10 +53,6 @@ def open_consumer(driver,Page_item,index):
         EC.element_to_be_clickable((By.XPATH,Page_item[index]))
         ).click()
 
-def close_consumer(driver):
-    WebDriverWait(driver, 10).until(
-        EC.element_to_be_clickable((By.XPATH,Close_Xpath))
-        ).click()
 def check_open_dar_entezar(driver,Page_item,i):
     x=Page_item[i]+'/div[6]/div'
     y=WebDriverWait(driver, 20).until(
@@ -70,9 +67,11 @@ def scrab_details(driver,sefareshat_list):
             ).text
     name=unidecode(Name).replace(' ','')
     if name in sefareshat_list:
+        time.sleep(internet_speed)
         WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.XPATH,ersal_Xpath))
             ).click()
+        time.sleep(internet_speed)
         WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.XPATH,marsoole_Xpath))
             ).click()
@@ -90,7 +89,12 @@ def scrab_details(driver,sefareshat_list):
             EC.presence_of_element_located((By.XPATH,confirm_Xpath))
             ).click()
         sefareshat_list[name][1]=True
-    
+    else:
+        time.sleep(internet_speed)
+        WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.XPATH,Cancel_Xpath))
+            ).click()
+        time.sleep(internet_speed)
 
 def getSefareshat():
    try:
@@ -101,13 +105,13 @@ def getSefareshat():
         sefareshat=dict()
         while(stop!=True):
             i+=1
-            code=unicodedata.normalize("NFKD",sheet.cell(i, 3).value).strip()
-            name=sheet.cell(i, 12).value
+            code=unicodedata.normalize("NFKD",sheet.cell(row=i,column=3).value).strip()
+            name=sheet.cell(row=i,column=12).value
             sefareshat.update(
                 { unidecode(name).replace(' ','') : [{name:code},False] }
                 )
             
-            if sheet.cell(i, 2).value==None:
+            if sheet.cell(row=i,column=2).value==None:
                 stop=True
                 sefareshat.pop(None)
    except:

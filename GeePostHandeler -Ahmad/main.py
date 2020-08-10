@@ -3,7 +3,6 @@ from Util import (check_open_dar_entezar,
                   init,
                   open_consumer,
                   scrab_details,
-                  close_consumer,
                   next_page,
                   save_not_done,
                 )
@@ -26,7 +25,6 @@ while(stop==False):
     if check_open_dar_entezar(driver,Page_item,i) :
         open_consumer(driver,Page_item,i)
         scrab_details(driver,sefareshat_list)
-        close_consumer(driver)
         end_page = page +1    
     #stop condition
     # stop =True
