@@ -4,7 +4,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
-internet_speed=0.3
+internet_speed=0.6
 
 
 add_product_Xpath='//*[@id="addProduct"]'
@@ -26,6 +26,7 @@ def CategoryElXpath(x):
     return '//*[@id="productCategory"]/div[2]/div['+str(x)+']'
 
 def init(driver):
+    
     driver.get('https://geektori.ir/admin/products')
     #loginPart
     INPUT_MAIL="farzam.mirmoeini@gmail.com"           
