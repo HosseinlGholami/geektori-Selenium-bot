@@ -10,8 +10,8 @@ Page_item=init(driver)
 
 #local parameter
 stop=False
-page=1
-end_page=0
+page=65
+end_page=200
 i=0
 while(stop==False):
     i +=1
@@ -20,7 +20,7 @@ while(stop==False):
         try:
             open_consumer(driver,Page_item,i)
             scrab_details(driver)
-            end_page = page +3
+            end_page = page +10
         except:
             print('stm wrong')
             

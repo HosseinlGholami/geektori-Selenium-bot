@@ -5,13 +5,25 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 import pickle
 
-internet_speed=0.3
+internet_speed=0.1
 
 next_page_Xpath='/html/body/div[1]/div/div[4]/div/div[2]/div[1]/div/div[2]/div[3]'
 
-TNK_TXT='اگر از استیکر ها راضی بودید ما رو به دوستاتون معرفی کنید '
+TNK_TXT='''دوست گیکتوری سلام
+کم کم داریم به روزای اخر سال نزدیک میشیم و چی بهتر از این که روزای اخر رو با خوشحالی و هیجان کنار هم سپری کنیم
+برای همین تیم گیکتوری میخواد ازت دعوت کنه تا بیای عیدی بگیری
 
-confirm_Xpath='/html/body/div[1]/div/div[4]/div/div[2]/div[2]/div/div/div/div/div[2]/div[1]'
+از ۱۷اسفند تا ۲۳ام
+قراره که داخل پیج اینستاگرام هر روز به ۴نفر جایزه بدیم
+
+حالا جایزه ها چیه ؟؟
+از کد۱۰۰هزار تومنی خرید محصولات اردیبهشت گرفته(یه عالمه سررسید ۱۴۰۰جذاب و...)
+تا کد ۶۰هزارتومنی خرید استیکر 
+و ارسال رایگان و پین هم که خواهیم داشت
+جذاب تر از همههه قرار ۲تا پاور بانک عیدی بدیم
+پس آب دستته بزار زمین، زنگوله ی پیج رو فعال کن که قراره برنده شی'''
+
+confirm_Xpath='/html/body/div[1]/div/div[4]/div/div[2]/div[2]/div/div/div/div/div[2]/div[2]'
 Takmil_Xpath='//*[@id="orderModalStatus"]/div/div/div[5]'
 edit_ersal_Xpath='/html/body/div[1]/div/div[4]/div/div[2]/div[2]/div/div/div/div/div[1]/div/div[1]/div/div[1]/div/div[3]/div/div/div[5]/div'
 edit_ersal_yes_Xpath='/html/body/div[1]/div/div[4]/div/div[2]/div[2]/div/div/div/div/div[1]/div/div[2]/div/div/div/div/div[1]/div/div[3]/div/div/div/div[2]'
