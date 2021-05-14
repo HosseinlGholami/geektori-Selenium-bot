@@ -38,6 +38,9 @@ def init(driver):
     InputPass.send_keys(PASS)
     InputPass.send_keys(Keys.RETURN)
 
+def feature_Xpath_name(i):
+    return f"/html/body/div/div/div[4]/div/div[2]/div[2]/div/div/div/div/div[1]/div/div[1]/div[1]/div/div[3]/div/div/div[1]/div[1]/div[2]/div[{i}]/div/div[6]/div/div/input"
+            
 
 def search_inside_category(driver,category):
     time.sleep(internet_speed)
@@ -130,6 +133,7 @@ def add_new_product(driver,name,PicPath,category,price):
         ).click()
     
     time.sleep(internet_speed)
+    
     #switch s3 and change price
     WebDriverWait(driver, 10).until(
         EC.presence_of_element_located((By.XPATH,pricePage_xpath))
@@ -144,7 +148,35 @@ def add_new_product(driver,name,PicPath,category,price):
         )
     inputPrice.send_keys(price)
     inputPrice.send_keys(Keys.RETURN)
+    time.sleep(internet_speed)
+    #add new feature click
+    add_fetaure_Xpath='/html/body/div/div/div[4]/div/div[2]/div[2]/div/div/div/div/div[1]/div/div[1]/div[1]/div/div[3]/div/div/div[1]/div[1]/div[1]/div/div[6]/div[1]/div'
+    WebDriverWait(driver, 10).until(
+        EC.presence_of_element_located((By.XPATH,add_fetaure_Xpath))
+        ).click()
+    #fill the feature title
+    new_fetaure_title_Xpath='/html/body/div/div/div[4]/div/div[2]/div[2]/div/div/div/div/div[1]/div/div[1]/div[1]/div/div[3]/div/div/div[3]/div/div/div/div/div[1]/div[2]/input'
     time.sleep(internet_speed)    
+    inputFeatuteTitle=WebDriverWait(driver, 10).until(
+        EC.presence_of_element_located((By.XPATH,new_fetaure_title_Xpath))
+        )
+    inputFeatuteTitle.send_keys("نوع برش")
+    inputFeatuteTitle.send_keys(Keys.RETURN)
+    time.sleep(internet_speed)
+    cr_fr_Xpath="/html/body/div/div/div[4]/div/div[2]/div[2]/div/div/div/div/div[1]/div/div[1]/div[1]/div/div[3]/div/div/div[2]"
+    for i in range(5):
+        WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.XPATH,cr_fr_Xpath))
+            ).click()
+    #complete the feature
+    feature_list=["simple","A","B","C","D","E"]
+    for i,feature_name in enumerate(feature_list):
+        temp_feature=WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.XPATH,feature_Xpath_name(i+1)))
+            )
+        temp_feature.send_keys(feature_name)
+        temp_feature.send_keys(Keys.RETURN)
+    
     #done
     WebDriverWait(driver, 10).until(
         EC.presence_of_element_located((By.XPATH,done_Xpath))
