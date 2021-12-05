@@ -12,25 +12,23 @@ import pickle
 
 internet_speed=0.3
 
-
-
-darentezar_filter_Xpath='/html/body/div[1]/div/div[4]/div/div[1]/div[2]/div[2]/div/div[1]'
-darentezar_Xpath='/html/body/div[1]/div/div[4]/div/div[1]/div[2]/div[2]/div/div[2]/div[1]'
+darentezar_filter_Xpath='/html/body/div/div/div[5]/div/div[1]/div[2]/div[2]/div/div[1]'
+darentezar_Xpath='/html/body/div/div/div[5]/div/div[1]/div[2]/div[2]/div/div[2]/div[1]'
 
 def costumer_Xpath(x):
-    return'/html/body/div[1]/div/div[4]/div/div[2]/div[1]/div/div[1]/div['+str(x)+']'
+    return f'/html/body/div/div/div[5]/div/div[2]/div[1]/div/div[1]/div[{x}]'
 
+                 
 order_Xpath=     '//*[@id="orderModalDetails"]/div[1]/div[2]'
 name_Xpath=      '//*[@id="orderModalShippingDetails"]/div[1]/div'
 mobile_Xpath=    '//*[@id="orderModalShippingDetails"]/div[3]/div'
 postalcode_Xpath='//*[@id="orderModalShippingDetails"]/div[4]/div'
 address_Xpath=   '//*[@id="orderModalShippingDetails"]/div[5]/div'
 tozihat_Xpath=   '//*[@id="orderModalShippingDetails"]/div[6]/div'
-close_Xpath='/html/body/div[1]/div/div[4]/div/div[2]/div[2]/div/div/div/div/div[2]/div[1]'
-nextPage_Xpath='/html/body/div[1]/div/div[4]/div/div[2]/div[1]/div/div[2]/div[3]'
-
-
-
+close_Xpath='/html/body/div/div/div[5]/div/div[2]/div[2]/div/div/div/div/div[2]/div[1]'
+             
+nextPage_Xpath='/html/body/div/div/div[5]/div/div[2]/div[1]/div/div[2]/div[3]'
+                
 
 def init(driver):    
     driver.maximize_window()

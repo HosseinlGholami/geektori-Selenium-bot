@@ -102,7 +102,7 @@ def Scrab_person(driver,esh,Tarah_name):
             wb.cell(row=j,column=2).value=unidecode(product_number)
             wb.cell(row=j,column=4).value='=B'+str(j)+'-'+'C'+str(j)
             wb.cell(row=j,column=5).value=unidecode(product_price)
-            wb.cell(row=j,column=6).value='=D'+str(j)+'*'+'E'+str(j)
+            wb.cell(row=j,column=6).value='=(D'+str(j)+'*'+'E'+str(j)+')-0.7*2.995'
             
             if (i ==20):
                 #click to go next page
