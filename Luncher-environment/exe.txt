@@ -1,4 +1,0 @@
-how to active environment
-
-
-pyinstaller -–onefile -–windowed  main.py

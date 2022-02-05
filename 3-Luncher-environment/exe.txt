@@ -1,0 +1,7 @@
+how to active environment
+
+pip install requirements.txt
+
+pipenv shell
+
+pyinstaller -–onefile -–windowed  main.py

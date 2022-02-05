@@ -1,3 +1,0 @@
-put sade moc in sade folder
-and put normal moc in the current folder
-then run the application and enjoy it !
